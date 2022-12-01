@@ -11,9 +11,8 @@ int main(int argc, char *argv[])
 
     std::ifstream file(argv[1]);
     std::string line;
-    int modi = std::stoi(argv[2]);
 
-    unsigned int first = 0, second = 0, third = 0, counter = 0;
+    unsigned int first = 0, second = 0, third = 0, counter = 0, modi = std::stoi(argv[2]);
 
     if(file.is_open()){
         while (file)
