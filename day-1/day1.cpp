@@ -16,11 +16,11 @@ int main(int argc, char * argv[]) {
   unsigned int first = 0, second = 0, third = 0, counter = 0, modi = std::stoi(argv[2]);
 
   if (!file.is_open()) {
-    count << "File has error";
+    std::cout << "File has error";
     return -1;
   }
-  while (file) {
-    std::getline(file, line);
+  while (std::getline(file, line)) {
+    
     if (!line.empty()) {
       counter += std::stoi(line);
       continue;
