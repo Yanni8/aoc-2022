@@ -33,5 +33,6 @@ int main(int argc, char *argv[])
     {
         score += points.at(line);
     }
+    file.close();
     std::cout << "Score: " << score << std::endl;
 }

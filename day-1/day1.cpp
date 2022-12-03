@@ -47,6 +47,7 @@ int main(int argc, char * argv[]) {
     counter = 0;
   }
 
+  file.close();
   std::cout << first << " + " << second << " + " << third << " = " << first + second + third << std::endl;
 
   return 0;
