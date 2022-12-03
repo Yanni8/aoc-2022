@@ -86,5 +86,6 @@ int main(int argc, char *argv[])
             }
         }
     }
+    file.close();
     std::cout << "Result: " << points << std::endl;
 }
