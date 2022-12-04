@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     std::string line;
     std::ifstream file(argv[1]);
-    unsigned int score;
+    unsigned int score = 0;
 
     while (std::getline(file, line))
     {

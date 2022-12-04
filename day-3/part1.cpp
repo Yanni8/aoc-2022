@@ -71,9 +71,8 @@ int main(int argc, char *argv[])
 
     std::string line, x, y;
     std::ifstream file(argv[1]);
-    unsigned int length;
+    unsigned int length,points = 0;
     char character;
-    unsigned int points;
 
     while (std::getline(file, line))
     {

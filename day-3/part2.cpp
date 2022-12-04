@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
     std::string line, secondLine, thirdLine;
     std::ifstream file(argv[1]);
     char character;
-    unsigned int points;
+    unsigned int points = 0;
 
     while (std::getline(file, line) && std::getline(file, secondLine) && std::getline(file, thirdLine))
     {
