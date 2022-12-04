@@ -7,7 +7,9 @@
 
 #include <map>
 
-std::map<std::string, unsigned int> points = {
+#include <chrono>
+
+const std::map<std::string, unsigned int> POINTS = {
     {"A X", 4},
     {"A Y", 8},
     {"A Z", 3},
@@ -25,14 +27,19 @@ int main(int argc, char *argv[])
         std::cout << "Syntax: " << argv[0] << " <FileName>";
     }
 
+    auto startTime = std::chrono::high_resolution_clock::now();   
+
     std::string line;
     std::ifstream file(argv[1]);
     unsigned int score;
 
     while (std::getline(file, line))
     {
-        score += points.at(line);
+        score += POINTS.at(line);
     }
+    
+    auto endTime = std::chrono::high_resolution_clock::now();
+    
     file.close();
-    std::cout << "Score: " << score << std::endl;
+    std::cout << "Score: " << score << " Time to execute in μs: " << (endTime - startTime) / std::chrono::microseconds(1) << std::endl;
 }

@@ -4,7 +4,9 @@
 
 #include <map>
 
-std::map<char, unsigned int> charToInt = {
+#include <chrono>
+
+const std::map<char, unsigned int> CHAR_TO_INT = {
     {'a', 1},
     {'A', 27},
     {'b', 2},
@@ -64,6 +66,9 @@ int main(int argc, char *argv[])
     {
         std::cout << "Syntax: " << argv[0] << " <FileName>";
     }
+
+    auto startTime = std::chrono::high_resolution_clock::now();   
+
     std::string line, x, y;
     std::ifstream file(argv[1]);
     unsigned int length;
@@ -81,11 +86,14 @@ int main(int argc, char *argv[])
             character = x[i];
             if (y.find(character) != std::string::npos)
             {
-                points += charToInt.at(character);
+                points += CHAR_TO_INT.at(character);
                 break;
             }
         }
     }
+
+    auto endTime = std::chrono::high_resolution_clock::now();   
+
     file.close();
-    std::cout << "Result: " << points << std::endl;
+    std::cout << "Result: " << points <<  " Time to execute in μs: "  << (endTime - startTime) / std::chrono::microseconds(1) << std::endl;
 }

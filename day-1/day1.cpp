@@ -4,12 +4,16 @@
 
 #include <fstream>
 
+#include <chrono>
+
 int main(int argc, char * argv[]) {
   if (argc < 3) {
     std::cout << "Syntax" << argv[0] << " <FileName>  <Task[0,1]>\n";
     return 1;
   }
 
+  auto startTime = std::chrono::high_resolution_clock::now();
+  
   std::ifstream file(argv[1]);
   std::string line;
 
@@ -46,9 +50,10 @@ int main(int argc, char * argv[]) {
 
     counter = 0;
   }
+  auto endTime = std::chrono::high_resolution_clock::now();
 
   file.close();
-  std::cout << first << " + " << second << " + " << third << " = " << first + second + third << std::endl;
+  std::cout << first << " + " << second << " + " << third << " = " << first + second + third << " Time to execute in μs: " << (endTime - startTime) / std::chrono::microseconds(1) << std::endl;
 
   return 0;
 }

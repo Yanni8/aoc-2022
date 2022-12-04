@@ -4,12 +4,18 @@
 
 #include <fstream>
 
+#include <chrono>
+
 int main(int argc, char *argv[])
 {
+
     if (argc != 2)
     {
         std::cout << "Syntax: " << argv[0] << " <FileName>";
+        return -1;
     }
+
+    auto startTime = std::chrono::high_resolution_clock::now();
 
     std::string line, pair1, pair2;
 
@@ -34,7 +40,10 @@ int main(int argc, char *argv[])
             counter++;
         }
     }
+    auto endTime = std::chrono::high_resolution_clock::now();
 
-    std::cout << "Number of lines: " << counter << std::endl;
+    file.close();
+
+    std::cout << "Number of lines: " << counter << " Time to execute in μs: " << (endTime - startTime) / std::chrono::microseconds(1) << std::endl;
     
 }
